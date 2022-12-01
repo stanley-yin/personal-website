@@ -1,5 +1,6 @@
-import Head from 'next/head'
+import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -13,6 +14,12 @@ export default function Home() {
         <h1 className="title">
           Read <Link href="/posts/first-post">this page!</Link>
         </h1>
+        <Image
+          src="/images/profile.jpg"
+          alt="my face"
+          width={250}
+          height={190}
+        />
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
@@ -55,8 +62,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
+          Powered by <img src="/vercel.svg" alt="Vercel" className="logo" />
         </a>
       </footer>
 
@@ -206,5 +212,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
