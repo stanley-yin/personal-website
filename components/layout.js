@@ -22,36 +22,14 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              height={144}
-              width={144}
-              alt=""
-            />
-            <h1>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                height={108}
-                width={108}
-                alt=""
-              />
-            </Link>
-            <h2>
-              <Link href="/">{name}</Link>
-            </h2>
-          </>
-        )}
+      <header className="backdrop-blur-md w-full fixed">
+        <div className="flex wrapper h-16 items-center">
+          <Link href="/" className="font-bold text-2xl">
+            Stanley Yin
+          </Link>
+        </div>
       </header>
-      <main>{children}</main>
+      <main className="py-16 wrapper">{children}</main>
       {!home && (
         <div>
           <Link href="/">← Back to home</Link>

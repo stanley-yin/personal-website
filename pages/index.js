@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { getAllPublished } from "../lib/notion";
 import Layout from "../components/layout";
+import Image from "next/image";
 
 export default function Home({ posts }) {
   if (!posts) return <h1>No posts</h1>;
@@ -14,7 +15,18 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className="text-3xl font-bold underline text-red-100">Blog</h1>
+        <h1>Blog</h1>
+        <div className="w-36 h-36 overflow-hidden rounded-full relative">
+          <Image
+            src="/images/profile.jpg"
+            alt="profile"
+            width={188}
+            height={188}
+            contain
+            property
+          />
+        </div>
+        <p>Hi, I'm Stanley. I'm a software engineer</p>
         {posts.map((post, index) => (
           <section key={index}>
             <div>
