@@ -10,16 +10,19 @@ In /pages/posts/[slug].js, add the getStaticProps() function after the Post comp
 
 import ReactMarkdown from "react-markdown";
 import { getAllPublished, getSinglePost } from "../../lib/notion";
+import Layout from "../../components/layout";
 
 export default function Post({ post }) {
   console.log(post);
   return (
-    <section>
-      <h2>{post.metadata.title}</h2>
-      <span>{post.metadata.date}</span>
-      <p>{post.metadata.tags.join(", ")}</p>
-      <ReactMarkdown>{post.markdown}</ReactMarkdown>
-    </section>
+    <Layout>
+      <section className="prose py-12">
+        <h2>{post.metadata.title}</h2>
+        <span>{post.metadata.date}</span>
+        <p>{post.metadata.tags.join(", ")}</p>
+        <ReactMarkdown>{post.markdown}</ReactMarkdown>
+      </section>
+    </Layout>
   );
 }
 
