@@ -1,15 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
-
 const name = "Stanley Yin";
 export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -25,42 +22,16 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt=""
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt=""
-              />
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
+      <header className="backdrop-blur-md w-full fixed border">
+        <div className="flex wrapper h-16 items-center">
+          <Link href="/" className="font-bold text-2xl">
+            Stanley Yin
+          </Link>
+        </div>
       </header>
-      <main>{children}</main>
+      <main className="py-16 wrapper">{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className="wrapper">
           <Link href="/">← Back to home</Link>
         </div>
       )}
