@@ -22,7 +22,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className="backdrop-blur-md w-full fixed border">
+      <header className="z-20 backdrop-blur-md w-full fixed border">
         <div className="flex wrapper h-16 items-center">
           <Link href="/" className="font-bold text-2xl">
             Stanley Yin
@@ -32,7 +32,7 @@ export default function Layout({ children, home }) {
       <main className="py-16 wrapper">{children}</main>
       {!home && (
         <div className="wrapper">
-          <Link href="/">← Back to home</Link>
+          <Link href="/">← Back</Link>
         </div>
       )}
     </div>

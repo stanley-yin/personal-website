@@ -13,15 +13,24 @@ import { getAllPublished, getSinglePost } from "../../lib/notion";
 import Layout from "../../components/layout";
 
 export default function Post({ post }) {
-  console.log(post);
+  const lines = post.markdown.split("\n");
+  // const menu = lines.forEach((line) => {});
+  console.log(post.markdown.split("\n"));
   return (
     <Layout>
-      <section className="prose py-12">
-        <h2>{post.metadata.title}</h2>
-        <span>{post.metadata.date}</span>
-        <p>{post.metadata.tags.join(", ")}</p>
-        <ReactMarkdown>{post.markdown}</ReactMarkdown>
-      </section>
+      <div className="py-12">
+        <div className="text-center">
+          <h1 className="text-4xl font-black mb-2">{post.metadata.title}</h1>
+          <span>{post.metadata.date}</span>
+          <div className="border my-8" />
+        </div>
+        <div className="flex gap-x-24">
+          <ReactMarkdown className="prose">{post.markdown}</ReactMarkdown>
+          <div>
+            <p>目錄</p>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 }
