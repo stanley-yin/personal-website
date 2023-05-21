@@ -1,21 +1,34 @@
-// const Post = () => {
-//   return <h1>Post</h1>;
-// };
-
-/*
-Similarly to the blog overview page, you will be pre-rendering each post page.
-
-In /pages/posts/[slug].js, add the getStaticProps() function after the Post component and call the getSingleBlogPostBySlug function to fetch the blog post from Notion.
-*/
-
 import ReactMarkdown from "react-markdown";
 import { getAllPublished, getSinglePost } from "../../lib/notion";
 import Layout from "../../components/layout";
+import Link from "next/link";
 
 export default function Post({ post }) {
-  const lines = post.markdown.split("\n");
-  // const menu = lines.forEach((line) => {});
-  console.log(post.markdown.split("\n"));
+  let menuData = [];
+
+  const contents = post.markdown.map((item, index) => {
+    const { type, parent } = item;
+    if (type === "heading_2") {
+      const content = parent.replace("## ", "");
+      const id = "h2_" + index;
+      menuData.push({
+        content: content,
+        id: id,
+      });
+      return <h2 id={id}>{content}</h2>;
+    } else {
+      return <ReactMarkdown>{parent}</ReactMarkdown>;
+    }
+  });
+  const menuContent = menuData.map((item, index) => {
+    return (
+      <li key={index}>
+        <Link href={`#${item.id}`} scroll={false}>
+          {item.content}
+        </Link>
+      </li>
+    );
+  });
   return (
     <Layout>
       <div className="py-12">
@@ -25,9 +38,10 @@ export default function Post({ post }) {
           <div className="border my-8" />
         </div>
         <div className="flex gap-x-24">
-          <ReactMarkdown className="prose">{post.markdown}</ReactMarkdown>
+          <div className="prose">{contents}</div>
           <div>
-            <p>目錄</p>
+            <p className="text-xl font-bold">目錄</p>
+            <ul>{menuContent}</ul>
           </div>
         </div>
       </div>
