@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss } from "react-icons/si";
 import { getAllPublished } from "../lib/notion";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
 export default function Home({ posts }) {
   if (!posts) return <h1>No posts</h1>;
@@ -40,7 +40,7 @@ export default function Home({ posts }) {
         </div>
 
         {/* Latest Blog */}
-        <div className="w-full  py-8">
+        <div className="w-full py-8">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold mb-4">Latest Articles</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

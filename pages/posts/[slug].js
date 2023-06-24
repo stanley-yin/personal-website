@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { getAllPublished, getSinglePost } from "../../lib/notion";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 import Link from "next/link";
 
 export default function Post({ post }) {
@@ -43,10 +43,10 @@ export default function Post({ post }) {
           <span>{post.metadata.date}</span>
           <div className="border my-8" />
         </div>
-        <div className="lg:flex gap-x-24 ">
-          <div>
+        <div className="lg:flex gap-x-24">
+          <div className="mb-10">
             <div className="sticky top-28">
-              <p className="text-xl font-bold">目錄</p>
+              <p className="text-2xl font-bold">目錄</p>
               <ul className="pt-2">{menuContent}</ul>
             </div>
           </div>
