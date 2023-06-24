@@ -6,24 +6,30 @@ import Link from "next/link";
 export default function Post({ post }) {
   let menuData = [];
 
+  let h2Count = 0;
   const contents = post.markdown.map((item, index) => {
     const { type, parent } = item;
     if (type === "heading_2") {
+      h2Count += 1;
       const content = parent.replace("## ", "");
-      const id = "h2_" + index;
+      const id = "h2_" + h2Count;
       menuData.push({
         content: content,
         id: id,
       });
-      return <h2 id={id}>{content}</h2>;
+      return (
+        <h2 id={id} className="scroll-element">
+          {content}
+        </h2>
+      );
     } else {
       return <ReactMarkdown>{parent}</ReactMarkdown>;
     }
   });
   const menuContent = menuData.map((item, index) => {
     return (
-      <li key={index}>
-        <Link href={`#${item.id}`} scroll={false}>
+      <li key={index} className="mb-1">
+        <Link href={`#${item.id}`} scroll={false} replace>
           {item.content}
         </Link>
       </li>
@@ -37,11 +43,15 @@ export default function Post({ post }) {
           <span>{post.metadata.date}</span>
           <div className="border my-8" />
         </div>
-        <div className="flex gap-x-24">
-          <div className="prose">{contents}</div>
+        <div className="lg:flex gap-x-24 ">
           <div>
-            <p className="text-xl font-bold">目錄</p>
-            <ul>{menuContent}</ul>
+            <div className="sticky top-28">
+              <p className="text-xl font-bold">目錄</p>
+              <ul className="pt-2">{menuContent}</ul>
+            </div>
+          </div>
+          <div className="scroll-body order-first prose max-w-3xl">
+            {contents}
           </div>
         </div>
       </div>

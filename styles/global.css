@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
+.scroll-element {
+    scroll-margin-top: 80px
+}
+
 .wrapper {
     @apply container px-6 sm:px-8 lg:px-16 mx-auto
 }
+

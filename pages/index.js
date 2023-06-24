@@ -10,7 +10,7 @@ export default function Home({ posts }) {
   if (!posts) return <h1>No posts</h1>;
 
   return (
-    <Layout>
+    <Layout home={true}>
       <div className="flex flex-col items-center justify-center text-gray-900">
         <Head>
           <title>My Blog</title>
