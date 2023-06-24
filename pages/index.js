@@ -14,7 +14,6 @@ export default function Home({ posts }) {
       <div className="flex flex-col items-center justify-center text-gray-900">
         <Head>
           <title>My Blog</title>
-          <link rel="icon" href="/favicon.ico" />
         </Head>
 
         {/* Hero Section */}

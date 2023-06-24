@@ -4,7 +4,7 @@ import { siteTitle } from "./Layout";
 export default function Seo() {
   return (
     <Head>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.svg" />
       <meta
         name="description"
         content="Learn how to build a personal website using Next.js"
